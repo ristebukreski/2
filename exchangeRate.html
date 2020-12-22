@@ -1,0 +1,28 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<script type="text/javascript">
+function ExchangeRate(){
+	exOne=document.getElementById("valFrom").value
+	if (window.XMLHttpRequest){
+  		xmlhttp=new XMLHttpRequest();
+  	}else {
+  		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  	}
+	xmlhttp.onreadystatechange=function(){
+  	if (xmlhttp.readyState==4 && xmlhttp.status==200){
+		    document.getElementById("result").innerHTML=xmlhttp.responseText;
+    	}	
+  	}
+	xmlhttp.open("GET","exRate.php?val="+exOne+"&t=" + Math.random(),true);
+	xmlhttp.send();
+}
+</script>
+</head>
+<body>
+	Value to Change <input type="Text" name="valFrom" id="valFrom"> 
+	<strong><div id="result" >&nbsp;</div></strong>
+	<button type="button" onclick="ExchangeRate()">Calcucate</button>
+</body>
+</html>
+
